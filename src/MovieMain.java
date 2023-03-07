@@ -1,21 +1,16 @@
 import movies.Movie;
 import movies.MyIMDB;
-
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 /**
- * The main program for the IMDB movie query system.  If run on the command line
- * with no arguments, it uses the large title (data/title.basics.tsv) and ratings
- * (data/title.ratings.tsv) files.  Otherwise with any arguments it uses the small title
+ * The main program for the IMDB movie query system.  If run it uses the small title
  * (data/small.basics.tsv) and ratings (data/small.ratings.tsv) files.
  *
  * The input commands need to be redirected from a file to standard input using the run
  * configuration.  Example input commands are in the input/ directory.
- *
- * @author RIT CS
  */
 public class MovieMain {
     // INPUT COMMANDS
@@ -36,11 +31,11 @@ public class MovieMain {
     private final MyIMDB imdb;
 
     /**
-     * Instantiate MyIDBM with the small or large dataset, then call three methods
+     * Instantiate MyIDBM with the small dataset, then call three methods
      * to handle reading in the files and creating the appropriate internal data
      * structures to represent them.
      *
-     * @param small true if the small dataset is to be used, false for the large one
+     * @param small: true if the small dataset is to be used, false for the large one
      * @throws FileNotFoundException if the file cannot be found
      */
     public MovieMain(boolean small) throws FileNotFoundException {
@@ -66,8 +61,8 @@ public class MovieMain {
     /**
      * Used by some commands to get the trailing words (often used for substring titles).
      *
-     * @param fields array of strings
-     * @param start the index in the array to start at
+     * @param fields: array of strings
+     * @param start: the index in the array to start at
      * @return the individual words concatenated to a string with spaces in-between
      */
     private String combineFields(String[] fields, int start) {
@@ -84,7 +79,7 @@ public class MovieMain {
     /**
      * Handles the contain command query, e.g.: "CONTAINS MOVIE Starman".
      *
-     * @param fields the command
+     * @param fields: the command
      */
     private void processContains(String[] fields) {
         String words = combineFields(fields, 2);
@@ -96,7 +91,7 @@ public class MovieMain {
     /**
      * Handles the lookup command query, e.g.: "LOOKUP tt0081505".
      *
-     * @param ID
+     * @param ID: the unique movie id
      */
     private void processLookup(String ID) {
         System.out.println(this.imdb.findMovieByID(ID));
@@ -105,9 +100,9 @@ public class MovieMain {
     /**
      * Handle the year-genre command query, e.g. "YEAR_AND_GENRE MOVIE 1945 Crime".
      *
-     * @param type the movie type, e.g. "MOVIE", "TV_SHOW", etc.
-     * @param year the year
-     * @param genre the genre, e.g. "Crime", "Drama", etc.
+     * @param type: the movie type, e.g. "MOVIE", "TV_SHOW", etc.
+     * @param year: the year
+     * @param genre: the genre, e.g. "Crime", "Drama", etc.
      */
     private void processYearAndGenre(String type, int year, String genre) {
         for (Movie movie : this.imdb.getMoviesByYearAndGenre(type, year, genre)) {
@@ -121,9 +116,9 @@ public class MovieMain {
     /**
      * Handles the runtime command query, e.g. "RUNTIME MOVIE 237 240".
      *
-     * @param type the movie type, e.g. "MOVIE", "TV_SHOW", etc.
-     * @param start the start year (inclusive)
-     * @param end the end year (inclusive)
+     * @param type: the movie type, e.g. "MOVIE", "TV_SHOW", etc.
+     * @param start: the low bound of runtime (inclusive)
+     * @param end: the high bound of runtime (inclusive)
      */
     private void processRuntime(String type, int start, int end) {
         for (Movie movie : this.imdb.getMoviesByRuntime(type, start, end)) {
@@ -137,8 +132,8 @@ public class MovieMain {
     /**
      * Handle the most-votes command query, e.g. "MOST_VOTES 10 MOVIE".
      *
-     * @param num number of movies to list
-     * @param type the movie type, e.g. "MOVIE", "TV_SHOW", etc.
+     * @param num: number of movies to list
+     * @param type: the movie type, e.g. "MOVIE", "TV_SHOW", etc.
      */
     private void processMostVotes(int num, String type) {
         int spot = 1;
@@ -176,14 +171,13 @@ public class MovieMain {
 
             System.out.println("Elapsed time (s): " + ((System.currentTimeMillis() - start) / 1000.0));
         }
-        in.close();  // <3 Jim
+        in.close();
     }
 
     /**
      * The main method.
      *
-     * @param args if a command line arg is present, we run with the small dataset,
-     *             otherwise the large.
+     * @param args: if a command line arg is present, we run with the small dataset, otherwise the large.
      * @throws FileNotFoundException if the file cannot be found
      */
     public static void main(String[] args) throws FileNotFoundException{
