@@ -1,13 +1,12 @@
 package cs;
-
 import java.util.AbstractMap;
 import java.util.Map;
 
 /**
  * A public class that contains maps to get the genre (GENRES) or
- * movie type (TITLE_TYPE) using a string key.  For example:<br>
- * <br>
- * <tt>MovieMaps.GENRES.get("Action");   // returns Genre.ACTION</tt><br>
+ * movie type (TITLE_TYPE) using a string key.  
+ * For example:
+ * <tt>MovieMaps.GENRES.get("Action");       // returns Genre.ACTION</tt><br>
  * <tt>MovieMaps.TITLE_TYPES.get("movie");   // returns TitleType.MOVIE</tt><br>
  */
 public final class MovieMaps {
