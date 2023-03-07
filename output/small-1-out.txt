@@ -35,13 +35,3 @@ Processing: MOST_VOTES 5 MOVIE
 	4: TITLE: The Usual Suspects, TYPE: MOVIE, YEAR: 1995, VOTES: 992642
 	5: TITLE: The Shining, TYPE: MOVIE, YEAR: 1980, VOTES: 899812
 Elapsed time (s): 0.006
-Processing: TOP 3 MOVIE 1994 1995
-YEAR: 1994
-	1: TITLE: The Shawshank Redemption, TYPE: MOVIE, RATING: 9.3, VOTES: 2346808
-	2: TITLE: Pulp Fiction, TYPE: MOVIE, RATING: 8.9, VOTES: 1829154
-	3: TITLE: Natural Born Killers, TYPE: MOVIE, RATING: 7.3, VOTES: 217034
-YEAR: 1995
-	1: TITLE: The Usual Suspects, TYPE: MOVIE, RATING: 8.5, VOTES: 992642
-	2: TITLE: Kuruthipunal, TYPE: MOVIE, RATING: 8.5, VOTES: 3755
-	3: TITLE: Strange Days, TYPE: MOVIE, RATING: 7.2, VOTES: 67297
-Elapsed time (s): 0.007
